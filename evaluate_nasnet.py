@@ -1,6 +1,6 @@
 import numpy as np
 import argparse
-from path import Path
+from pathlib import Path
 
 from keras.models import Model
 from keras.layers import Dense, Dropout
@@ -11,7 +11,7 @@ from utils.nasnet import NASNetMobile, preprocess_input
 from utils.score_utils import mean_score, std_score
 
 parser = argparse.ArgumentParser(description='Evaluate NIMA(Inception ResNet v2)')
-parser.add_argument('-dir', type=str, default=None,
+parser.add_argument('-dir', type=str, default='img/',
                     help='Pass a directory to evaluate the images in it')
 
 parser.add_argument('-img', type=str, default=[None], nargs='+',

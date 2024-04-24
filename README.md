@@ -49,9 +49,9 @@ This is a 3 step process:
 3) **Fine-Tune the model**: This step is optional, only for those who have sufficient memory to load both the large model and the feed forward classifier at the same time. Use the `train_nasnet_mobile.py` as reference as to how to load both the large model and the weights of the feed forward network into this large model and then train fully for several epochs at a lower learning rate.
 
 # Example
-<img src="https://github.com/titu1994/neural-image-assessment/blob/master/images/NIMA.jpg?raw=true" height=100% width=100%>
+<img src="images/NIMA.jpg" height=100% width=100%>
 
-<img src="https://github.com/titu1994/neural-image-assessment/blob/master/images/NIMA2.jpg?raw=true" height=100% width=100%>
+<img src="images/NIMA2.jpg" height=100% width=100%>
 
 # Requirements
 - Keras

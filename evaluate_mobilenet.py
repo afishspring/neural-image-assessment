@@ -1,6 +1,6 @@
 import numpy as np
 import argparse
-from path import Path
+from pathlib import Path
 
 from keras.models import Model
 from keras.layers import Dense, Dropout
@@ -12,7 +12,7 @@ import tensorflow as tf
 from utils.score_utils import mean_score, std_score
 
 parser = argparse.ArgumentParser(description='Evaluate NIMA(Inception ResNet v2)')
-parser.add_argument('-dir', type=str, default=None,
+parser.add_argument('-dir', type=str, default='img/',
                     help='Pass a directory to evaluate the images in it')
 
 parser.add_argument('-img', type=str, default=[None], nargs='+',
@@ -32,9 +32,16 @@ rank_images = args.rank.lower() in ("true", "yes", "t", "1")
 # give priority to directory
 if args.dir is not None:
     print("Loading images from directory : ", args.dir)
-    imgs = Path(args.dir).files('*.png')
-    imgs += Path(args.dir).files('*.jpg')
-    imgs += Path(args.dir).files('*.jpeg')
+    imgs=[]
+    for file in Path(args.dir).rglob('*.png'):
+        imgs.append(file)
+    for file in Path(args.dir).rglob('*.jpg'):
+        imgs.append(file)
+    for file in Path(args.dir).rglob('*.jpeg'):
+        imgs.append(file)
+    # imgs = Path(args.dir).files('*.png')
+    # imgs += Path(args.dir).files('*.jpg')
+    # imgs += Path(args.dir).files('*.jpeg')
 
 elif args.img[0] is not None:
     print("Loading images from path(s) : ", args.img)
